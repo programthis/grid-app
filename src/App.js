@@ -17,10 +17,6 @@ function App() {
         });
     });
 
-    const fixed = (float) => {
-        return Math.round(float * 1000) / 1000 + '%';
-    };
-
     return (
         <div className="App">
             <div className="grid-stack">
