@@ -6,13 +6,20 @@ import Widget from "./Widget";
 
 function App() {
     useEffect(() => {
+        let windowWidth = window.innerWidth,
+            windowHeight = window.innerHeight,
+            numOfColumns = Math.floor(windowWidth / 100);
         document.title = "The Grid";
         var grid = GridStack.init({
             float: true,
             gridBackground: true,
-            column: 20
+            column: numOfColumns
         });
     });
+
+    const fixed = (float) => {
+        return Math.round(float * 1000) / 1000 + '%';
+    };
 
     return (
         <div className="App">

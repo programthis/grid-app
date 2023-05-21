@@ -11,7 +11,7 @@
     height: 100vh;
     background-image: linear-gradient(to right, #888 1px, transparent 1px),
                         linear-gradient(to bottom, #888 1px, transparent 1px);
-      background-size: 83.33px 83.33px; /* Adjust the size of the grid cells */
+    background-size: 101.05px 101.05px; /* Adjust the size of the grid cells */
 }
 
 .grid-stack-item {
@@ -21,7 +21,7 @@
     height: 100px;*/
 }
 
-$columns: 20;
+$columns: 19;
 @function fixed($float) {
   @return round($float * 1000) / 1000; // total 2+3 digits being %
 }
