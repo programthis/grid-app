@@ -1,0 +1,36 @@
+.grid-stack {
+/*    background-color: #efefef;*/
+    /*background-size: 100px 100px;
+    background-image:
+        linear-gradient(to right, grey 1px, transparent 1px),
+        linear-gradient(to bottom, grey 1px, transparent 1px);*/
+    /*background-image: linear-gradient(#e0e0e0 1px, transparent 1px), linear-gradient(90deg, #e0e0e0 1px, transparent 0px), linear-gradient(rgba(255,255,255,.3) 5px, transparent 100px), linear-gradient(90deg, rgba(255,255,255,.3) 5px, transparent 100px);
+    background-size: 100px 62px, calc(8.33% + 0px) 100px, 20px 20px, 20px 20px;
+    background-position: -2px -2px, -1px -2px, -1px -1px, -1px -1px;*/
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to right, #888 1px, transparent 1px),
+                        linear-gradient(to bottom, #888 1px, transparent 1px);
+      background-size: 83.33px 83.33px; /* Adjust the size of the grid cells */
+}
+
+.grid-stack-item {
+    background-color: #7ba4d7;
+    text-align: center;
+    /*width: 100px;
+    height: 100px;*/
+}
+
+$columns: 20;
+@function fixed($float) {
+  @return round($float * 1000) / 1000; // total 2+3 digits being %
+}
+.gs-#{$columns} > .grid-stack-item {
+
+  width: fixed(100% / $columns);
+
+  @for $i from 1 through $columns - 1 {
+    &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+    &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+  }
+}
