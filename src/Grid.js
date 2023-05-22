@@ -16,6 +16,7 @@ export default class Grid extends Component {
 
     loadGrid() {
         console.log("loading grid...");
+        // TODO create json that is like mongo database to load this data
     }
 
     saveGrid() {
@@ -38,10 +39,10 @@ export default class Grid extends Component {
                     }
                 </div>
                 <div className="grid-stack">
-                    <Widget options={{width: "1", height: "2", name: "Luke", background: "#67d967"}} />
-                    <Widget options={{width: "1", height: "2", name: "Leia", background: "#3371cd"}} />
-                    <Widget options={{width: "1", height: "2", name: "Marv", background: "#ebeb5b"}} />
-                    <Widget options={{width: "1", height: "2", name: "Darth", background: "#db2c2c"}} />
+                    <Widget options={{width: "1", height: "1", name: "Luke", background: "#67d967", x_pos: "0", y_pos: "0"}} />
+                    <Widget options={{width: "1", height: "1", name: "Leia", background: "#3371cd", x_pos: "1", y_pos: "0"}} />
+                    <Widget options={{width: "1", height: "1", name: "Marv", background: "#ebeb5b", x_pos: "2", y_pos: "0"}} />
+                    <Widget options={{width: "2", height: "3", name: "Darth", background: "#db2c2c", x_pos: "1", y_pos: "1"}} />
                 </div>
             </div>
         );
