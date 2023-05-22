@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { GridStack } from 'gridstack';
 import 'gridstack/dist/gridstack.min.css';
 import './App.scss';
-import Widget from "./Widget";
+import Grid from "./Grid";
 
 function App() {
     useEffect(() => {
@@ -15,16 +15,13 @@ function App() {
             gridBackground: true,
             column: numOfColumns
         });
+        // $('.grid-stack').data('gridstack').setGridWidth(2);
+        // setColumn() is also an option
     });
 
     return (
         <div className="App">
-            <div className="grid-stack">
-                <Widget options={{width: "1", height: "2", name: "Luke", background: "#67d967"}} />
-                <Widget options={{width: "1", height: "2", name: "Leia", background: "#3371cd"}} />
-                <Widget options={{width: "1", height: "2", name: "Marv", background: "#ebeb5b"}} />
-                <Widget options={{width: "1", height: "2", name: "Darth", background: "#db2c2c"}} />
-            </div>
+            <Grid />
         </div>
     );
 }
