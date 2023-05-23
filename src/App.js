@@ -3,6 +3,7 @@ import { GridStack } from 'gridstack';
 import 'gridstack/dist/gridstack.min.css';
 import './App.scss';
 import Widget from "./Widget";
+import users from './database/users.json';
 
 function App() {
     const [current_user, setCurrentUser] = useState(false);
@@ -34,8 +35,16 @@ function App() {
     });
 
     const loggingInUser = () => {
-        console.log("setting current user...");
-        setCurrentUser(true);
+        let data = users["users"],
+            email = "admin@admin.com",
+            password = "admin",
+            user = data.find(userObject => {
+                return userObject.email === email
+            });
+        if (password === user.password) {
+            // let's pretend the password is encrypted
+            setCurrentUser(true);   
+        }
     }
 
     return (
