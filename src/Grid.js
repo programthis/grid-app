@@ -25,6 +25,7 @@ export default class Grid extends Component {
 
     render() {
         let current_user = this.state.current_user;
+        // TODO create each loop with the saved widget data
         return (
             <div>
                 <div className="topContainer">
