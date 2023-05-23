@@ -76,14 +76,11 @@ function App() {
     }
 
     const loadWidgetData = () => {
-        console.log("loading widget data...");
+        let widgetData = localStorage.getItem("widgetData");
     }
 
     const saveWidgetData = () => {
-        console.log("Saving widget data to json file...");
-        console.log(widgetDataJson);
-        // Saving widget data to json file...
-        // fake API call here
+        localStorage.setItem("widgetData", JSON.stringify(widgetDataJson));
     }
 
     return (
