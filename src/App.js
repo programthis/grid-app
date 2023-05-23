@@ -6,8 +6,10 @@ import Widget from "./Widget";
 import user_data from './database/users.json';
 import widget_data from './database/widgets.json';
 
+
 function App() {
     const [current_user, setCurrentUser] = useState(false);
+    const [widgetDataJson, setWidgetDataJson] = useState({});
 
     useEffect(() => {
         let windowWidth = window.innerWidth,
@@ -21,13 +23,15 @@ function App() {
         // $('.grid-stack').data('gridstack').setGridWidth(2);
         // setColumn() is also an option
 
-        // setting event listener for whenever the grid item is moved
+        // setting listener for whenever the grid item is moved
+        let data = widget_data["widgets"];
         const handleMove = (event, gridItem) => {
             let id = gridItem[0]._id,
                 x_pos = gridItem[0].x,
                 y_pos = gridItem[0].y;
-            // TODO update json data whenever things are moved
-
+            data[id]["x_pos"] = x_pos;
+            data[id]["y_pos"] = y_pos;
+            setWidgetDataJson(data);
         };
         grid.on('change', handleMove);
         return () => {
@@ -76,7 +80,10 @@ function App() {
     }
 
     const saveWidgetData = () => {
-        console.log("saving widget data...");
+        console.log("Saving widget data to json file...");
+        console.log(widgetDataJson);
+        // Saving widget data to json file...
+        // fake API call here
     }
 
     return (
