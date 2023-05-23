@@ -1,0 +1,24 @@
+{
+	"widgets": {
+		"1": {
+			"name": "Luke",
+			"x_pos": "0",
+			"y_pos": "0"
+		},
+		"2": {
+			"name": "Leia",
+			"x_pos": "1",
+			"y_pos": "0"
+		},
+		"3": {
+			"name": "Marv",
+			"x_pos": "2",
+			"y_pos": "0"
+		},
+		"4": {
+			"name": "Luke",
+			"x_pos": "1",
+			"y_pos": "1"
+		}
+	}
+}

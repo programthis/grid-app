@@ -3,7 +3,8 @@ import { GridStack } from 'gridstack';
 import 'gridstack/dist/gridstack.min.css';
 import './App.scss';
 import Widget from "./Widget";
-import users from './database/users.json';
+import user_data from './database/users.json';
+import widget_data from './database/widgets.json';
 
 function App() {
     const [current_user, setCurrentUser] = useState(false);
@@ -35,16 +36,47 @@ function App() {
     });
 
     const loggingInUser = () => {
-        let data = users["users"],
+        let data = user_data["users"],
             email = "admin@admin.com",
             password = "admin",
             user = data.find(userObject => {
                 return userObject.email === email
             });
+
         if (password === user.password) {
             // let's pretend the password is encrypted
             setCurrentUser(true);   
         }
+
+        // sample api request below
+        // fetch('https://api.grid_app.com/users/login', {
+        //     method: 'POST',
+        //     headers: {
+        //         Accept: 'application/json',
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //       email: email,
+        //       password: hashedPassword,
+        //     }),
+        // }).then(response => {
+        //         if (response.ok) {
+        //             setCurrentUser(true);
+        //         }
+        //         else {
+        //             console.log("error...");
+        //         }
+        //     })
+        //     .catch(error => {
+        //     });
+    }
+
+    const loadWidgetData = () => {
+        console.log("loading widget data...");
+    }
+
+    const saveWidgetData = () => {
+        console.log("saving widget data...");
     }
 
     return (
@@ -53,8 +85,8 @@ function App() {
                 {
                     current_user ?
                     <div>
-                        <button onClick={() => this.loadGrid()}>Load</button>
-                        <button onClick={() => this.saveGrid()}>Save</button>
+                        <button onClick={loadWidgetData}>Load</button>
+                        <button onClick={saveWidgetData}>Save</button>
                     </div>
                     :
                     <button onClick={loggingInUser}>Login</button>    
