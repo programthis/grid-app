@@ -9,8 +9,6 @@ import widget_data from './database/widgets.json';
 
 function App() {
     const [current_user, setCurrentUser] = useState(false);
-    const [widgetDataJson, setWidgetDataJson] = useState(null);
-    const [loadedDataJson, setLoadedData] = useState(null);
     const gridRef = useRef(null);
 
     useEffect(() => {
@@ -26,32 +24,6 @@ function App() {
 
         // $('.grid-stack').data('gridstack').setGridWidth(2);
         // setColumn() is also an option
-
-        // setting listener for whenever the grid item is moved
-        let data = widget_data["widgets"];
-        if (widgetDataJson) {
-            data = widgetDataJson;
-        }
-        // TODO issue with this not working
-        if (loadedDataJson) {
-            data = loadedDataJson;
-            setLoadedData(null);
-        }
-        const handleMove = (event, gridItem) => {
-            let id = gridItem[0]._id,
-                x_pos = gridItem[0].x,
-                y_pos = gridItem[0].y,
-                width = gridItem[0].w,
-                height = gridItem[0].h;
-            data = data.map(obj =>
-                obj.id === id ? { ...obj, x_pos: x_pos, y_pos: y_pos, width: width, height: height } : obj
-            );
-            setWidgetDataJson(data);
-        };
-        grid.on('change', handleMove);
-        return () => {
-            grid.off('change', handleMove);
-        };
     });
 
     const loggingInUser = () => {
@@ -92,29 +64,19 @@ function App() {
     }
 
     const loadWidgetData = () => {
-        let widgetData = localStorage.getItem("widgetData"),
-            widgetArray = JSON.parse(widgetData);
-        setLoadedData(widgetArray);
-        if (widgetArray) {
-            const grid = gridRef.current;
-            grid.removeAll();
-            widgetArray.forEach(function(widget) {
-                let widgetContent = `
-                      <div className="grid-stack-item" style="background-color: ${widget.background}">
-                        <div className="grid-stack-item-content">${widget.name}</div>
-                      </div>
-                    `;
-                grid.addWidget(widgetContent, {_id: widget.id, w: widget.width, h: widget.height, x: widget.x_pos, y: widget.y_pos});
-            });
-        }
-        else {
-            console.log("No data available to load...");
-        }
+        let grid = gridRef.current,
+            savedLayout = localStorage.getItem('savedLayout');
+        savedLayout = JSON.parse(savedLayout);
+        grid.removeAll();
+        grid.load(savedLayout);
     }
 
     const saveWidgetData = () => {
-        console.log(widgetDataJson);
-        localStorage.setItem("widgetData", JSON.stringify(widgetDataJson));
+        let grid = gridRef.current,
+            layout = grid.save(),
+            serializedLayout = JSON.stringify(layout);
+        console.log(serializedLayout);
+        localStorage.setItem('savedLayout', serializedLayout);
     }
 
     return (
