@@ -28,11 +28,13 @@
     background-image: linear-gradient(to right, #888 1px, transparent 1px),
                         linear-gradient(to bottom, #888 1px, transparent 1px);
     background-size: 101.05px 101.05px; /* Adjust the size of the grid cells */
-}
 
-.grid-stack-item {
-    background-color: #7ba4d7;
-    text-align: center;
+    .grid-stack-item {
+        @include border-box;
+        padding: 10px;
+        background-color: #7ba4d7;
+        text-align: center;
+    }
 }
 
 $columns: 19;

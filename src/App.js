@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { GridStack } from 'gridstack';
 import 'gridstack/dist/gridstack.min.css';
 import './App.scss';
@@ -11,6 +11,7 @@ function App() {
     const [current_user, setCurrentUser] = useState(false);
     const [widgetDataJson, setWidgetDataJson] = useState({});
     const [widgetArray, setWidgetArray] = useState(null);
+    const gridRef = useRef(null);
 
     useEffect(() => {
         let windowWidth = window.innerWidth,
@@ -21,6 +22,8 @@ function App() {
             gridBackground: true,
             column: numOfColumns
         });
+        gridRef.current = grid;
+
         // $('.grid-stack').data('gridstack').setGridWidth(2);
         // setColumn() is also an option
 
@@ -85,7 +88,16 @@ function App() {
     const loadWidgetData = () => {
         let widgetData = localStorage.getItem("widgetData"),
             widgetArray = JSON.parse(widgetData);
-        setWidgetArray(widgetArray);
+        // setWidgetArray(widgetArray);
+        const grid = gridRef.current;
+        widgetArray.forEach(function(widget) {
+            let widgetContent = `
+                  <div className="grid-stack-item" style="background-color: ${widget.background}">
+                    <div className="grid-stack-item-content">${widget.name}</div>
+                  </div>
+                `;
+            grid.addWidget(widgetContent, {w: widget.width, h: widget.height, x: widget.x_pos, y: widget.y_pos});
+        });
     }
 
     const saveWidgetData = () => {
