@@ -1,24 +1,40 @@
 {
-	"widgets": {
-		"1": {
+	"widgets": [
+		{
+			"id": 1,
 			"name": "Luke",
 			"x_pos": "0",
-			"y_pos": "0"
+			"y_pos": "0",
+			"width": "1",
+			"height": "1",
+			"background": "#67d967"
 		},
-		"2": {
+		{
+			"id": 2,
 			"name": "Leia",
 			"x_pos": "1",
-			"y_pos": "0"
+			"y_pos": "0",
+			"width": "1",
+			"height": "1",
+			"background": "#3371cd"
 		},
-		"3": {
+		{
+			"id": 3,
 			"name": "Marv",
 			"x_pos": "2",
-			"y_pos": "0"
+			"y_pos": "0",
+			"width": "1",
+			"height": "1",
+			"background": "#ebeb5b"
 		},
-		"4": {
-			"name": "Luke",
+		{
+			"id": 4,
+			"name": "Darth",
 			"x_pos": "1",
-			"y_pos": "1"
+			"y_pos": "1",
+			"width": "2",
+			"height": "3",
+			"background": "#db2c2c"
 		}
-	}
+	]
 }

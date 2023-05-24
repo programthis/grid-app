@@ -10,6 +10,7 @@ import widget_data from './database/widgets.json';
 function App() {
     const [current_user, setCurrentUser] = useState(false);
     const [widgetDataJson, setWidgetDataJson] = useState({});
+    const [widgetArray, setWidgetArray] = useState(null);
 
     useEffect(() => {
         let windowWidth = window.innerWidth,
@@ -28,9 +29,12 @@ function App() {
         const handleMove = (event, gridItem) => {
             let id = gridItem[0]._id,
                 x_pos = gridItem[0].x,
-                y_pos = gridItem[0].y;
-            data[id]["x_pos"] = x_pos;
-            data[id]["y_pos"] = y_pos;
+                y_pos = gridItem[0].y,
+                width = gridItem[0].w,
+                height = gridItem[0].h;
+            data = data.map(obj =>
+                obj.id === id ? { ...obj, x_pos: x_pos, y_pos: y_pos, width: width, height: height } : obj
+            );
             setWidgetDataJson(data);
         };
         grid.on('change', handleMove);
@@ -46,6 +50,8 @@ function App() {
             user = data.find(userObject => {
                 return userObject.email === email
             });
+
+        // let's pretend there's an actual login form
 
         if (password === user.password) {
             // let's pretend the password is encrypted
@@ -76,7 +82,9 @@ function App() {
     }
 
     const loadWidgetData = () => {
-        let widgetData = localStorage.getItem("widgetData");
+        let widgetData = localStorage.getItem("widgetData"),
+            widgetArray = JSON.parse(widgetData);
+        setWidgetArray(widgetArray);
     }
 
     const saveWidgetData = () => {
@@ -97,10 +105,19 @@ function App() {
                 }
             </div>
             <div className="grid-stack">
-                <Widget options={{width: "1", height: "1", name: "Luke", background: "#67d967", x_pos: "0", y_pos: "0"}} />
-                <Widget options={{width: "1", height: "1", name: "Leia", background: "#3371cd", x_pos: "1", y_pos: "0"}} />
-                <Widget options={{width: "1", height: "1", name: "Marv", background: "#ebeb5b", x_pos: "2", y_pos: "0"}} />
-                <Widget options={{width: "2", height: "3", name: "Darth", background: "#db2c2c", x_pos: "1", y_pos: "1"}} />
+                {
+                    widgetArray ?
+                    widgetArray.map(function(object, key) {
+                        return <Widget key={key} options={{width: object.width, height: object.height, name: object.name, background: object.background, x_pos: object.x_pos, y_pos: object.y_pos}} />;
+                    })
+                    :
+                    <>
+                        <Widget options={{width: "1", height: "1", name: "Luke", background: "#67d967", x_pos: "0", y_pos: "0"}} />
+                        <Widget options={{width: "1", height: "1", name: "Leia", background: "#3371cd", x_pos: "1", y_pos: "0"}} />
+                        <Widget options={{width: "1", height: "1", name: "Marv", background: "#ebeb5b", x_pos: "2", y_pos: "0"}} />
+                        <Widget options={{width: "2", height: "3", name: "Darth", background: "#db2c2c", x_pos: "1", y_pos: "1"}} />
+                    </>
+                }
             </div>
         </div>
     );
