@@ -10,6 +10,7 @@ import widget_data from './database/widgets.json';
 function App() {
     const [current_user, setCurrentUser] = useState(false);
     const [widgetDataJson, setWidgetDataJson] = useState(null);
+    const [loadedDataJson, setLoadedData] = useState(null);
     const gridRef = useRef(null);
 
     useEffect(() => {
@@ -30,6 +31,11 @@ function App() {
         let data = widget_data["widgets"];
         if (widgetDataJson) {
             data = widgetDataJson;
+        }
+        // TODO issue with this not working
+        if (loadedDataJson) {
+            data = loadedDataJson;
+            setLoadedData(null);
         }
         const handleMove = (event, gridItem) => {
             let id = gridItem[0]._id,
@@ -57,7 +63,6 @@ function App() {
             });
 
         // let's pretend there's an actual login form
-
         if (password === user.password) {
             // let's pretend the password is encrypted
             setCurrentUser(true);   
@@ -89,6 +94,7 @@ function App() {
     const loadWidgetData = () => {
         let widgetData = localStorage.getItem("widgetData"),
             widgetArray = JSON.parse(widgetData);
+        setLoadedData(widgetArray);
         if (widgetArray) {
             const grid = gridRef.current;
             grid.removeAll();
