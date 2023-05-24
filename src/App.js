@@ -29,7 +29,9 @@ function App() {
 
         // setting listener for whenever the grid item is moved
         let data = widget_data["widgets"];
-        setWidgetDataJson(data);
+        // TODO only use data initialy, then use local storage
+        // setWidgetDataJson(data);
+        // console.log("is this happening...");
         const handleMove = (event, gridItem) => {
             let id = gridItem[0]._id,
                 x_pos = gridItem[0].x,
@@ -39,6 +41,7 @@ function App() {
             data = data.map(obj =>
                 obj.id === id ? { ...obj, x_pos: x_pos, y_pos: y_pos, width: width, height: height } : obj
             );
+            console.log(data);
             setWidgetDataJson(data);
         };
         grid.on('change', handleMove);
@@ -90,6 +93,8 @@ function App() {
             widgetArray = JSON.parse(widgetData);
         // setWidgetArray(widgetArray);
         const grid = gridRef.current;
+        console.log(widgetArray);
+        grid.removeAll();
         widgetArray.forEach(function(widget) {
             let widgetContent = `
                   <div className="grid-stack-item" style="background-color: ${widget.background}">
@@ -101,6 +106,7 @@ function App() {
     }
 
     const saveWidgetData = () => {
+        console.log(widgetDataJson);
         localStorage.setItem("widgetData", JSON.stringify(widgetDataJson));
     }
 
