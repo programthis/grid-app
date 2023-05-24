@@ -26,6 +26,7 @@ function App() {
 
         // setting listener for whenever the grid item is moved
         let data = widget_data["widgets"];
+        setWidgetDataJson(data);
         const handleMove = (event, gridItem) => {
             let id = gridItem[0]._id,
                 x_pos = gridItem[0].x,
