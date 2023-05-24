@@ -14,6 +14,9 @@ function App() {
         let windowWidth = window.innerWidth,
             numOfColumns = Math.floor(windowWidth / 100);
         document.title = "The Grid";
+        console.log(numOfColumns);
+        console.log(windowWidth / 10);
+        
         var grid = GridStack.init({
             float: true,
             gridBackground: true,
