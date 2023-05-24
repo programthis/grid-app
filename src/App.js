@@ -89,16 +89,21 @@ function App() {
     const loadWidgetData = () => {
         let widgetData = localStorage.getItem("widgetData"),
             widgetArray = JSON.parse(widgetData);
-        const grid = gridRef.current;
-        grid.removeAll();
-        widgetArray.forEach(function(widget) {
-            let widgetContent = `
-                  <div className="grid-stack-item" style="background-color: ${widget.background}">
-                    <div className="grid-stack-item-content">${widget.name}</div>
-                  </div>
-                `;
-            grid.addWidget(widgetContent, {_id: widget.id, w: widget.width, h: widget.height, x: widget.x_pos, y: widget.y_pos});
-        });
+        if (widgetArray) {
+            const grid = gridRef.current;
+            grid.removeAll();
+            widgetArray.forEach(function(widget) {
+                let widgetContent = `
+                      <div className="grid-stack-item" style="background-color: ${widget.background}">
+                        <div className="grid-stack-item-content">${widget.name}</div>
+                      </div>
+                    `;
+                grid.addWidget(widgetContent, {_id: widget.id, w: widget.width, h: widget.height, x: widget.x_pos, y: widget.y_pos});
+            });
+        }
+        else {
+            console.log("No data available to load...");
+        }
     }
 
     const saveWidgetData = () => {
