@@ -29,6 +29,7 @@ function App() {
 
         // setting listener for whenever the grid item is moved
         let data = widget_data["widgets"];
+
         // TODO only use data initialy, then use local storage
         // setWidgetDataJson(data);
         // console.log("is this happening...");
@@ -42,6 +43,7 @@ function App() {
                 obj.id === id ? { ...obj, x_pos: x_pos, y_pos: y_pos, width: width, height: height } : obj
             );
             console.log(data);
+            console.log(gridItem);
             setWidgetDataJson(data);
         };
         grid.on('change', handleMove);
@@ -101,7 +103,7 @@ function App() {
                     <div className="grid-stack-item-content">${widget.name}</div>
                   </div>
                 `;
-            grid.addWidget(widgetContent, {w: widget.width, h: widget.height, x: widget.x_pos, y: widget.y_pos});
+            grid.addWidget(widgetContent, {_id: widget.id, w: widget.width, h: widget.height, x: widget.x_pos, y: widget.y_pos});
         });
     }
 
