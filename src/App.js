@@ -9,6 +9,7 @@ import user_data from './database/users.json';
 function App() {
     const [current_user, setCurrentUser] = useState(false);
     const gridRef = useRef(null);
+    const [backgroundSize, setBackgroundSize] = useState(0);
 
     useEffect(() => {
         // let windowWidth = window.innerWidth,
@@ -26,11 +27,11 @@ function App() {
 
         const initializeGrid = () => {
             let windowWidth = window.innerWidth,
-                numOfColumns = Math.floor(windowWidth / 100);
+                numOfColumns = Math.floor(windowWidth / 100),
+                backgroundCalculation = windowWidth / numOfColumns;
             document.title = "The Grid";
-            console.log(numOfColumns);
-            console.log(windowWidth / 10);
             
+            setBackgroundSize(backgroundCalculation);
             var grid = GridStack.init({
                 float: true,
                 gridBackground: true,
@@ -108,6 +109,10 @@ function App() {
         localStorage.setItem('savedLayout', serializedLayout);
     }
 
+    const gridStyle = {
+        backgroundSize: `${backgroundSize}px ${backgroundSize}px`
+    }
+
     return (
         <div className="App">
             <div className="topContainer">
@@ -121,7 +126,7 @@ function App() {
                     <button onClick={loggingInUser}>Login</button>    
                 }
             </div>
-            <div className="grid-stack">
+            <div className="grid-stack" style={gridStyle}>
                 <Widget options={{width: "1", height: "1", name: "Luke", x_pos: "0", y_pos: "0"}} />
                 <Widget options={{width: "1", height: "1", name: "Leia", x_pos: "1", y_pos: "0"}} />
                 <Widget options={{width: "1", height: "1", name: "Marv", x_pos: "2", y_pos: "0"}} />
