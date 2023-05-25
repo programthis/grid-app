@@ -29,14 +29,17 @@ function App() {
         }
 
         const resizeWindow = () => {
+            let windowWidth = window.innerWidth,
+                numOfColumns = Math.floor(windowWidth / 100),
+                backgroundCalculation = windowWidth / numOfColumns;
+            setBackgroundSize(backgroundCalculation);
             let grid = gridRef.current;
             if (grid) {
-                grid.destroy();
-                initializeGrid();
+                // grid.destroy(false);
+                grid.column(numOfColumns);
             }
             // initializeGrid();
         }
-
         initializeGrid();
         window.addEventListener('resize', resizeWindow);
     });
