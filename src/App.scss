@@ -43,14 +43,299 @@
     }
 }
 
-$columns: 19;
-@function fixed($float) {
-    @return round($float * 1000) / 1000; // total 2+3 digits being %
+// apologies for this jank css
+
+@media all and (min-width: 100px) and (max-width: 200px) {
+    $columns: 1;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
 }
-.gs-#{$columns} > .grid-stack-item {
-    width: fixed(100% / $columns);
-    @for $i from 1 through $columns - 1 {
-        &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
-        &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+
+@media all and (min-width: 200px) and (max-width: 300px) {
+    $columns: 2;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 300px) and (max-width: 400px) {
+    $columns: 3;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 400px) and (max-width: 500px) {
+    $columns: 4;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 500px) and (max-width: 600px) {
+    $columns: 5;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 600px) and (max-width: 700px) {
+    $columns: 6;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 700px) and (max-width: 800px) {
+    $columns: 7;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 800px) and (max-width: 900px) {
+    $columns: 8;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 900px) and (max-width: 1000px) {
+    $columns: 9;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 1000px) and (max-width: 1100px) {
+    $columns: 10;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 1100px) and (max-width: 1200px) {
+    $columns: 11;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+
+@media all and (min-width: 1200px) and (max-width: 1300px) {
+    $columns: 12;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 1300px) and (max-width: 1400px) {
+    $columns: 13;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 1400px) and (max-width: 1500px) {
+    $columns: 14;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 1500px) and (max-width: 1600px) {
+    $columns: 15;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 1600px) and (max-width: 1700px) {
+    $columns: 16;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 1700px) and (max-width: 1800px) {
+    $columns: 17;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 1800px) and (max-width: 1900px) {
+    $columns: 18;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 1900px) and (max-width: 2000px) {
+    $columns: 19;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 2000px) and (max-width: 2100px) {
+    $columns: 20;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
+    }
+}
+
+@media all and (min-width: 2100px) and (max-width: 2200px) {
+    $columns: 21;
+    @function fixed($float) {
+        @return round($float * 1000) / 1000; // total 2+3 digits being %
+    }
+    .gs-#{$columns} > .grid-stack-item {
+        width: fixed(100% / $columns);
+        @for $i from 1 through $columns - 1 {
+            &[gs-x='#{$i}'] { left: fixed((100% / $columns) * $i); }
+            &[gs-w='#{$i+1}'] { width: fixed((100% / $columns) * ($i+1)); }
+        }
     }
 }

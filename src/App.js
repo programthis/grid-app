@@ -12,19 +12,6 @@ function App() {
     const [backgroundSize, setBackgroundSize] = useState(0);
 
     useEffect(() => {
-        // let windowWidth = window.innerWidth,
-        //     numOfColumns = Math.floor(windowWidth / 100);
-        // document.title = "The Grid";
-        // console.log(numOfColumns);
-        // console.log(windowWidth / 10);
-        
-        // var grid = GridStack.init({
-        //     float: true,
-        //     gridBackground: true,
-        //     column: numOfColumns
-        // });
-        // gridRef.current = grid;
-
         const initializeGrid = () => {
             let windowWidth = window.innerWidth,
                 numOfColumns = Math.floor(windowWidth / 100),
@@ -37,6 +24,7 @@ function App() {
                 gridBackground: true,
                 column: numOfColumns
             });
+            console.log(numOfColumns);
             gridRef.current = grid;
         }
 
@@ -46,16 +34,12 @@ function App() {
                 grid.destroy();
                 initializeGrid();
             }
+            // initializeGrid();
         }
 
         initializeGrid();
         window.addEventListener('resize', resizeWindow);
-
-        // $('.grid-stack').data('gridstack').setGridWidth(2);
-        // setColumn() is also an option
     });
-
-    
 
     const loggingInUser = () => {
         let data = user_data["users"],
