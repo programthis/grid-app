@@ -24,7 +24,6 @@ function App() {
                 gridBackground: true,
                 column: numOfColumns
             });
-            console.log(numOfColumns);
             gridRef.current = grid;
         }
 
@@ -35,10 +34,13 @@ function App() {
             setBackgroundSize(backgroundCalculation);
             let grid = gridRef.current;
             if (grid) {
+                // ********seems to be an issue with below two lines, opening ticket in gridstack.js ****
                 // grid.destroy(false);
-                grid.column(numOfColumns);
+                // initializeGrid();
+
+                // using jank option as above seems to be broken in library package
+                window.location.reload(false);
             }
-            // initializeGrid();
         }
         initializeGrid();
         window.addEventListener('resize', resizeWindow);
