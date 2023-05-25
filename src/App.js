@@ -94,6 +94,7 @@ function App() {
         let grid = gridRef.current,
             layout = grid.save(),
             serializedLayout = JSON.stringify(layout);
+        // note: ideally, we would want to save the ID in this serialized layout to make it easier to assign the background color/content to the widget
         localStorage.setItem('savedLayout', serializedLayout);
     }
 
