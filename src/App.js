@@ -34,11 +34,11 @@ function App() {
             let grid = gridRef.current;
             if (grid) {
                 // ********seems to be an issue with below two lines, opening ticket in gridstack.js ****
-                grid.destroy(false);
-                initializeGrid();
+                // grid.destroy(false);
+                // initializeGrid();
 
                 // using jank option as above seems to be broken in library package
-                // window.location.reload(false);
+                window.location.reload(false);
             }
         }
         initializeGrid();
