@@ -34,9 +34,6 @@ function App() {
             let grid = gridRef.current;
             if (grid) {
                 grid.column(numOfColumns);
-                // ********seems to be an issue with below two lines, opening ticket in gridstack.js ****
-                // grid.destroy(false);
-                // initializeGrid();
             }
         }
         initializeGrid();
