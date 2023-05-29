@@ -21,7 +21,8 @@ function App() {
             setBackgroundSize(backgroundCalculation);
             var grid = GridStack.init({
                 float: true,
-                column: numOfColumns
+                column: numOfColumns,
+                cellHeight: 100
             });
             gridRef.current = grid;
         }
@@ -94,7 +95,7 @@ function App() {
     }
 
     const gridStyle = {
-        backgroundSize: `${backgroundSize}px ${backgroundSize}px`
+        backgroundSize: `${backgroundSize}px 100px`
     }
 
     return (
