@@ -33,13 +33,10 @@ function App() {
             setBackgroundSize(backgroundCalculation);
             let grid = gridRef.current;
             if (grid) {
-                // grid.column = numOfColumns;
+                grid.column(numOfColumns);
                 // ********seems to be an issue with below two lines, opening ticket in gridstack.js ****
-                grid.destroy(false);
-                initializeGrid();
-
-                // using jank option as above seems to be broken in library package
-                // window.location.reload(false);
+                // grid.destroy(false);
+                // initializeGrid();
             }
         }
         initializeGrid();
